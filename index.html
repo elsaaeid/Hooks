@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooks</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Box Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class='bx bxs-up-arrow'></i></button>
+    <div class="container">
+<center>
+	<h2>Hooks</h2>
+
+<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+<div class="custom-select" style="width:200px;">
+   <div class="start" id="start">Start<i class='bx bxs-right-arrow' id="arrow"></i></div>
+   <div class="select" id="select">
+    <div class="option"><a href="#Introducing"><i class='bx bxs-pointer' ></i>Introducing Hooks</a></div>
+    <div class="option"><a href="#StateHook"><i class='bx bxs-pointer' ></i>Using the State Hooks</a></div>
+    <div class="option"><a href="#EffectHook"><i class='bx bxs-pointer' ></i>Using the Effect Hooks</a></div>
+    <div class="option"><a href="#RulesHooks"><i class='bx bxs-pointer' ></i>Rules of Hooks</a></div>
+    <div class="option"><a href="#BuildingHooks"><i class='bx bxs-pointer' ></i>Building Your Own Hooks</a></div>
+    <div class="option"><a href="#APIReference"><i class='bx bxs-pointer' ></i>Hooks API Reference</a></div>
+    <div class="option"><a href="#HooksFAQ"><i class='bx bxs-pointer' ></i>Hooks FAQ</a></div>
+  </div>
+  </div>
+</div>
+
+<div class="scroll-container">
+<section class="Introducing" id="Introducing">
+    <div class="row">
+        <div class="content">
+           <p>
+       Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+	   </p>
+ 	   <img src="assets/images/1.png" id="myImg" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+	   <div class="note"><span class="N">Note</span>
+           <p>Hooks will not work in React class components.</p>
+        </div>
+        <h1>Hook Rules</h1>
+        <p>There are 3 rules for hooks:</p>
+         <ul>
+	   <li>Hooks can only be called inside React function components.</li>
+	   <li>Hooks can only be called at the top level of a component.</li>
+	   <li>Hooks cannot be conditional</li>
+	 </ul>
+        </div>
+    </div>
+</section>
+
+<section class="StateHook" id="StateHook">
+    <div class="row">
+        <div class="content">
+           <h1>📌 State Hook</h1>
+	   <p>This example renders a counter. When you click the button, it increments the value:</p>
+ 	   <img src="assets/images/2.png" id="myImg2" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+	   <p class="state">Here, useState is a Hook (we’ll talk about what this means in a moment). We call it inside a function component to add some local state to it. React will preserve this state between re-renders. useState returns a pair: the current state value and a function that lets you update it. You can call this function from an event handler or somewhere else. It’s similar to this.setState in a class, except it doesn’t merge the old and new state together. (We’ll show an example comparing useState to this.state in Using the State Hook.)
+</br>
+</br>
+</br>
+The only argument to useState is the initial state. In the example above, it is 0 because our counter starts from zero. Note that unlike this.state, the state here doesn’t have to be an object — although it can be if you want. The initial state argument is only used during the first render.
+
+</p>
+<p>Declaring multiple state variables
+You can use the State Hook more than once in a single component:</p>
+ 	   <img src="assets/images/3.png" id="myImg3" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+<p class="usestate">The array destructuring syntax lets us give different names to the state variables we declared by calling <span>useState</span>. These names aren’t a part of the <span>useState</span> API. Instead, React assumes that if you call <span>useState</span> many times, you do it in the same order during every render. We’ll come back to why this works and when this is useful later.
+
+</p>
+<h3>But what is a Hook?</h3>
+</br>
+<p>Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes — they let you use React without classes. (We don’t recommend rewriting your existing components overnight but you can start using Hooks in the new ones if you’d like.)
+
+React provides a few built-in Hooks like useState. You can also create your own Hooks to reuse stateful behavior between different components. We’ll look at the built-in Hooks first.</p>
+<div class="note"><span class="N">Detailed Explanation</span>
+           <p>You can learn more about the State Hook on a dedicated page: Using the State Hook.</p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="EffectHook" id="EffectHook">
+    <div class="row">
+        <div class="content">
+           <h1>⚡️ Effect Hook</h1>
+	   <p>You’ve likely performed data fetching, subscriptions, or manually changing the DOM from React components before. We call these operations “side effects” (or “effects” for short) because they can affect other components and can’t be done during rendering.</p>
+	 <p>The Effect Hook, useEffect, adds the ability to perform side effects from a function component. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API. (We’ll show examples comparing useEffect to these methods in Using the Effect Hook.)</p>
+</br>
+</br>
+For example, this component sets the document title after React updates the DOM:
+ 	   <img src="assets/images/4.png" id="myImg4" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+        <p class="usestate">When you call <span>useEffect</span>, you’re telling React to run your “effect” function after flushing changes to the DOM. Effects are declared inside the component so they have access to its props and state. By default, React runs the effects after every render — including the first render. (We’ll talk more about how this compares to class lifecycles in <a href="https://reactjs.org/docs/hooks-effect.html">to know more </a>.)
+
+Effects may also optionally specify how to “clean up” after them by returning a function. For example, this component uses an effect to subscribe to a friend’s online status, and cleans up by unsubscribing from it:</p>
+ 	   <img src="assets/images/5.png" id="myImg5" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+
+</br>
+	 <p class="usestate">In this example, React would unsubscribe from our <span>ChatAPI</span> when the component unmounts, as well as before re-running the effect due to a subsequent render. (If you want, there’s a way to tell React to skip re-subscribing if the <span>props.friend.id</span> we passed to <span>ChatAPI</span> didn’t change.)
+</br>
+Just like with <span>useState</span>, you can use more than a single effect in a component:</p>
+ 	   <img src="assets/images/6.png" id="myImg6" />
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+<p>Hooks let you organize side effects in a component by what pieces are related (such as adding and removing a subscription), rather than forcing a split based on lifecycle methods.</p>
+<div class="note"><span class="N">Detailed Explanation</span>
+           <p>You Can Learn More About The State Hook On A Dedicated Page: Using The State Hook.</p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="RulesHooks" id="RulesHooks">
+    <div class="row">
+        <div class="content">
+           <h1>✌️ Rules of Hooks</h1>
+	   <p>Hooks are JavaScript functions, but they impose two additional rules:</p>
+	   <ul>
+	      <li>Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.</li>
+	      <li>Only call Hooks from React function components. Don’t call Hooks from regular JavaScript functions. (There is just one other valid place to call Hooks — your own custom Hooks. We’ll learn about them in a moment.)</li>
+	   </ul>
+         <p>We provide a <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks">linter plugin</a> to enforce these rules automatically. We understand these rules might seem limiting or confusing at first, but they are essential to making Hooks work well.</p>
+        </div>
+    </div>
+</section>
+
+<section class="BuildingHooks" id="BuildingHooks">
+    <div class="row">
+        <div class="content">
+           <h1>💡 Building Your Own Hooks</h1>
+	   <p class="usestate">Sometimes, we want to reuse some stateful logic between components. Traditionally, there were two popular solutions to this problem: <a href="https://reactjs.org/docs/higher-order-components.html">higher-order components</a> and <a href="https://reactjs.org/docs/render-props.html">render props</a>. Custom Hooks let you do this, but without adding more components to your tree.
+</br>
+</br>
+Earlier on this page, we introduced a <span>FriendStatus</span> component that calls the <span>useState</span> and <span>useEffect</span> Hooks to subscribe to a friend’s online status. Let’s say we also want to reuse this subscription logic in another component.
+
+First, we’ll extract this logic into a custom Hook called <span>useFriendStatus</span>:</p>
+ 	   <img src="assets/images/7.png" id="myImg7" />
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+        <p>It takes friendID as an argument, and returns whether our friend is online.
+</br>
+Now we can use it from both components:</p>
+ 	   <img src="assets/images/8.png" id="myImg8" />
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+
+<div class="note"><span class="N">Detailed Explanation</span>
+           <p>You can learn more about custom Hooks on a dedicated page: <a href="https://reactjs.org/docs/hooks-custom.html">Building Your Own Hooks</a>.</p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="APIReference" id="APIReference">
+    <div class="row">
+        <div class="content">
+           <h1>Hooks API Reference</h1>
+	   <p>react-hooks-testing-library exports the following methods:</p>
+	   <ul>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#renderhook">renderHook</a></li>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#act">act</a></li>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#cleanup">cleanup</a></li>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#addcleanup">addCleanup</a></li>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#removecleanup">removeCleanup</a></li>
+	     <li><a href="https://react-hooks-testing-library.com/reference/api#manually-suppress-output">suppressErrorOutput</a></li>
+	   </ul>
+         <p>to know more <a href="https://reactjs.org/docs/hooks-reference.html">visit</a> </p>
+        </div>
+    </div>
+</section>
+
+<section class="HooksFAQ" id="HooksFAQ">
+    <div class="row">
+        <div class="content">
+           <h1>Hooks FAQ</h1>
+	   <a href="https://reactjs.org/docs/hooks-faq.html">visit</a>
+        </div>
+    </div>
+</section>
+</div>
+</center>
+    </div>
+    <script src="assets/js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
